@@ -3,10 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   output: 'export',
-  // Configure basePath if you're not deploying to the root of your domain
-  // For GitHub Pages with a custom domain, you can remove this
-  // For GitHub Pages with a project site (username.github.io/repo-name), uncomment:
-  // basePath: '/portfolio',
+  // Configure basePath for GitHub Pages project site
+  basePath: '/portfolioWebsite',
   
   // Configure images for static export
   images: {
@@ -19,6 +17,9 @@ const nextConfig: NextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  
+  // Add assetPrefix for GitHub Pages
+  assetPrefix: '/portfolioWebsite',
 };
 
 export default nextConfig;
