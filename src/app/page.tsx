@@ -1,5 +1,6 @@
 import { AnimatedElement, StaggerContainer, StaggerItem } from "@/components/ui/Motion";
 import { OptimizedImage } from "@/components/ui/OptimizedImage";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -25,20 +26,20 @@ export default function Home() {
               
               <AnimatedElement variant="fadeIn" delay={0.6}>
                 <div className="mt-10 flex gap-4">
-                  <a 
+                  <Link 
                     href="/projects" 
                     className="inline-flex items-center justify-center font-medium rounded transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 bg-orange-500 text-white hover:bg-orange-600 focus:ring-orange-500 py-2 px-4 text-base"
                     aria-label="View my portfolio projects"
                   >
                     View Projects
-                  </a>
-                  <a 
+                  </Link>
+                  <Link 
                     href="/contact" 
                     className="inline-flex items-center justify-center font-medium rounded transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 border-2 border-current bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 py-2 px-4 text-base"
                     aria-label="Get in touch with me"
                   >
                     Get In Touch
-                  </a>
+                  </Link>
                 </div>
               </AnimatedElement>
             </div>
@@ -103,13 +104,13 @@ export default function Home() {
           </StaggerContainer>
           
           <AnimatedElement variant="fadeIn" delay={0.4} className="mt-12 text-center">
-            <a 
+            <Link 
               href="/projects" 
               className="inline-flex items-center justify-center font-medium rounded transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 bg-teal-500 text-white hover:bg-teal-600 focus:ring-teal-500 py-2 px-4 text-base"
               aria-label="View all projects in my portfolio"
             >
               View All Projects
-            </a>
+            </Link>
           </AnimatedElement>
         </div>
       </section>
