@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from './ui/ThemeToggle';
+import Link from 'next/link';
 
 interface MobileNavProps {
   className?: string;
@@ -87,13 +88,13 @@ export const MobileNav: React.FC<MobileNavProps> = ({ className = '' }) => {
               <ul className="space-y-3">
                 {navigationItems.map((item) => (
                   <li key={item.href}>
-                    <a
+                    <Link
                       href={item.href}
                       className="block py-2 px-4 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-orange-500 dark:hover:text-orange-400 rounded-md transition-all"
                       onClick={toggleMenu}
                     >
                       {item.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
