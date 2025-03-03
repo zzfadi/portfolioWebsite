@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100`}>
+      <body className={`${inter.className} flex flex-col min-h-screen bg-surface-50 dark:bg-gray-900 text-surface-800 dark:text-gray-100`}>
         <ThemeProvider>
           <ClientRouter />
           <SkipToContent contentId="main-content" />
@@ -36,7 +36,7 @@ export default function RootLayout({
                 <div className="flex justify-between h-16">
                   <div className="flex items-center">
                     <Link href="/" className="flex-shrink-0 flex items-center" aria-label="Go to homepage">
-                      <span className="text-xl font-bold text-gray-900 dark:text-white">Portfolio</span>
+                      <span className="text-xl font-bold text-primary-800 dark:text-white">Portfolio</span>
                     </Link>
                   </div>
                   
@@ -51,7 +51,7 @@ export default function RootLayout({
                       <Link
                         key={item.href}
                         href={item.href}
-                        className="px-4 py-2 text-sm font-medium transition-colors text-gray-700 hover:text-orange-500 dark:text-gray-300 dark:hover:text-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded"
+                        className="px-4 py-2 text-sm font-medium transition-colors text-surface-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"
                         aria-current={item.href === '/' ? 'page' : undefined}
                       >
                         {item.label}
@@ -73,22 +73,22 @@ export default function RootLayout({
             {children}
           </main>
           
-          <footer className="bg-gray-100 dark:bg-gray-900 mt-auto" role="contentinfo">
+          <footer className="bg-surface-100 dark:bg-gray-900 mt-auto" role="contentinfo">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Logo and Description */}
                 <div>
                   <Link href="/" className="inline-flex items-center" aria-label="Go to homepage">
-                    <span className="text-xl font-bold text-gray-900 dark:text-white">Portfolio</span>
+                    <span className="text-xl font-bold text-primary-800 dark:text-white">Portfolio</span>
                   </Link>
-                  <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-xs">
+                  <p className="mt-4 text-surface-600 dark:text-gray-400 max-w-xs">
                     A showcase of my projects and professional skills as a software engineer.
                   </p>
                 </div>
 
                 {/* Quick Links */}
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">
+                  <h3 className="text-sm font-semibold text-primary-800 dark:text-white uppercase tracking-wider">
                     Quick Links
                   </h3>
                   <ul className="mt-4 space-y-2" role="list">
@@ -101,7 +101,7 @@ export default function RootLayout({
                       <li key={item.href}>
                         <Link 
                           href={item.href}
-                          className="text-gray-600 hover:text-orange-500 dark:text-gray-400 dark:hover:text-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded"
+                          className="text-surface-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"
                           aria-current={item.href === '/' ? 'page' : undefined}
                         >
                           {item.label}
@@ -113,7 +113,7 @@ export default function RootLayout({
 
                 {/* Social Links */}
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">
+                  <h3 className="text-sm font-semibold text-primary-800 dark:text-white uppercase tracking-wider">
                     Connect
                   </h3>
                   <ul className="mt-4 space-y-2" role="list">
@@ -127,7 +127,7 @@ export default function RootLayout({
                           href={item.url} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="text-gray-600 hover:text-orange-500 dark:text-gray-400 dark:hover:text-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded"
+                          className="text-surface-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"
                           aria-label={`Visit my ${item.platform} profile`}
                         >
                           {item.platform}
@@ -139,8 +139,8 @@ export default function RootLayout({
               </div>
 
               {/* Copyright and Theme Toggle */}
-              <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 flex justify-between items-center">
-                <p className="text-gray-500 dark:text-gray-400 text-sm">
+              <div className="mt-12 pt-8 border-t border-surface-200 dark:border-gray-800 flex justify-between items-center">
+                <p className="text-surface-500 dark:text-gray-400 text-sm">
                   © {new Date().getFullYear()} Portfolio. All rights reserved.
                 </p>
                 <ThemeToggle />
