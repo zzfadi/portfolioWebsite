@@ -3,11 +3,13 @@
  * Contains site navigation links
  */
 
+import socialLinks from './social';
+
 export interface NavItem {
   href: string;
   label: string;
   icon?: string;
-  children?: NavItem[];
+  children?: NavItem;
   isExternal?: boolean;
 }
 
@@ -18,26 +20,13 @@ const navigation: NavItem[] = [
   { href: '/contact', label: 'Contact' }
 ];
 
-export const socialNavigation: NavItem[] = [
-  { 
-    href: 'https://github.com/yourusername', 
-    label: 'GitHub', 
-    icon: 'github',
-    isExternal: true
-  },
-  { 
-    href: 'https://linkedin.com/in/yourusername', 
-    label: 'LinkedIn', 
-    icon: 'linkedin',
-    isExternal: true
-  },
-  { 
-    href: 'https://twitter.com/yourusername', 
-    label: 'Twitter', 
-    icon: 'twitter',
-    isExternal: true
-  }
-];
+// Convert socialLinks to NavItem type
+export const socialNavigation: NavItem[] = socialLinks.map(link => ({
+  href: link.href,
+  label: link.label,
+  icon: link.icon,
+  isExternal: link.isExternal
+}));
 
 export const footerNavigation = {
   main: navigation,
@@ -48,4 +37,4 @@ export const footerNavigation = {
   ]
 };
 
-export default navigation; 
+export default navigation;

@@ -16,33 +16,52 @@ export interface Experience {
 
 const experiences: Experience[] = [
   {
-    title: "Senior Software Engineer",
-    company: "Company Name",
-    location: "San Francisco, CA",
-    startDate: "2020",
+    title: "Senior Firmware Engineer",
+    company: "SK Hynix Solidigm",
+    location: "San Jose, CA",
+    startDate: "January 2022",
     endDate: null, // Present
-    description: "Led development of key features for the company's flagship product.",
+    description: "Led firmware development for AI-optimized enterprise SSDs and new SSD variants.",
     responsibilities: [
-      "Led development of key features for the company's flagship product",
-      "Mentored junior developers and conducted code reviews",
-      "Implemented CI/CD pipelines to improve deployment efficiency"
+      "Led firmware development for AI-optimized enterprise SSDs utilizing SLC architecture.",
+      "Developed C++ transport layer firmware for Gen5 PCIe SSDs on proprietary architecture.",
+      "Implemented latency monitoring features enabling advanced performance debugging and optimization.",
+      "Created memory analysis tools to optimize code distribution across system memories (DRAM, TCM).",
+      "Orchestrated cross-functional collaboration between firmware, hardware, validation, and manufacturing teams."
     ],
-    technologies: ["React", "TypeScript", "Node.js", "AWS"]
+    technologies: ["C", "C++", "NVMe", "PCIe", "SMBus", "ARM", "Xtensa", "custom TPU architectures", "Lauterbach debugger"]
   },
   {
-    title: "Software Developer",
-    company: "Previous Company",
-    location: "San Francisco, CA",
-    startDate: "2018",
-    endDate: "2020",
-    description: "Developed and maintained web applications using React and Node.js.",
+    title: "Firmware Engineer",
+    company: "Intel (NAND Storage Group)",
+    location: "Folsom, CA",
+    startDate: "June 2021",
+    endDate: "December 2021",
+    description: "Developed and optimized C firmware for Gen4 PCIe Data Center SSDs.",
     responsibilities: [
-      "Developed and maintained web applications using React and Node.js",
-      "Collaborated with design team to implement responsive UI components",
-      "Optimized database queries to improve application performance"
+      "Specialized in NAND and media management firmware development.",
+      "Designed and implemented NAND discovery feature optimizing parallel operations.",
+      "Enhanced XOR error correction distribution across channels.",
+      "Utilized JTAG debugging with GHS debugger to investigate complex firmware issues."
     ],
-    technologies: ["React", "JavaScript", "Node.js", "MongoDB"]
+    technologies: ["C", "PCIe", "NAND", "JTAG", "GHS debugger"]
+  },
+  {
+    title: "Embedded Software Development Engineer",
+    company: "GE Aviation",
+    location: "Cincinnati, OH",
+    startDate: "August 2019",
+    endDate: "June 2021",
+    description: "Led the development of interfaces for cellular modems and WiFi routers and implemented multi-threaded software following DO-178C standards.",
+    responsibilities: [
+      "Led development of interfaces for cellular modem and WiFi router using Linux kernel and C/C++ programming.",
+      "Implemented multi-threaded software solutions following DO-178C aviation safety standards.",
+      "Managed end-to-end Software Development Life Cycle (SDLC) for the Cellular Module.",
+      "Revolutionized the team's static code analysis process by implementing a cloud-based solution.",
+      "Created automated testing frameworks using Python and Shell scripting."
+    ],
+    technologies: ["Linux kernel", "C/C++", "QMI", "AT commands", "USB", "Ethernet", "Python", "Shell scripting", "LDRA"]
   }
 ];
 
-export default experiences; 
+export default experiences;

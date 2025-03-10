@@ -9,32 +9,18 @@ export interface Education {
   location?: string;
   startYear: string;
   endYear: string;
-  description?: string;
+  description: string;
   achievements?: string[];
 }
 
 const education: Education[] = [
   {
-    degree: "Bachelor of Science in Computer Science",
-    institution: "University Name",
-    location: "City, State",
+    degree: "Bachelor of Science in Electrical Engineering",
+    institution: "University of Illinois at Urbana-Champaign",
     startYear: "2014",
-    endYear: "2018",
-    description: "Graduated with honors. Specialized in software engineering and web development.",
-    achievements: [
-      "Dean's List all semesters",
-      "Senior thesis on web application optimization",
-      "President of Computer Science Club"
-    ]
-  },
-  {
-    degree: "Web Development Bootcamp",
-    institution: "Tech Academy",
-    location: "Online",
-    startYear: "2019",
     endYear: "2019",
-    description: "Intensive 12-week program focused on modern web development technologies."
+    description: "Focus on Embedded Systems and Computer Engineering",
   }
 ];
 
-export default education; 
+export default education;

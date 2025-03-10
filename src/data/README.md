@@ -1,105 +1,45 @@
 # Content Management System
 
-This directory contains the data files that power the portfolio website. The content is separated from the components to make it easier to update and maintain the site.
+This directory contains the type-safe data files powering the portfolio website. All content is strictly typed and validated through TypeScript interfaces.
 
-## Directory Structure
+## Data Structure
 
-- `personal.ts` - Personal information (name, title, bio, contact info)
-- `projects.ts` - Project details
-- `experience.ts` - Work history
-- `education.ts` - Educational background
-- `skills.ts` - Technical skills
-- `navigation.ts` - Site navigation links
-- `index.ts` - Central export point for all data
+- `personal.ts`: Personal information (Name, title, bio, contact)
+- `projects.ts`: Project details with routing IDs
+- `experience.ts`: Work history with technical details
+- `education.ts`: Academic background
+- `skills.ts`: Categorized technical skills
+- `navigation.ts`: Site navigation structure
+- `index.ts`: Centralized type-safe exports
 
-## How to Update Content
+## Type Safety Guidelines
 
-### Update Personal Information
+- All data files export TypeScript interfaces
+- Default exports are used for data collections
+- Type imports should come from `@/data`
+- Avoid circular dependencies through explicit imports
 
-Edit `personal.ts` to update your name, title, bio, and contact information:
+## Update Workflow
 
-```typescript
-const personalInfo: PersonalInfo = {
-  name: "Your Name",
-  title: "Your Title",
-  bio: "Your bio goes here...",
-  // ...other fields
-};
-```
-
-### Add/Update Projects
-
-Edit `projects.ts` to add or update your portfolio projects:
-
-```typescript
-const projects: Project[] = [
-  {
-    id: "unique-id",
-    title: "Project Title",
-    description: "Short project description",
-    // ...other fields
-    featured: true, // Set to true to display on homepage
-  },
-  // Add more projects here
-];
-```
-
-### Update Skills
-
-Edit `skills.ts` to update your technical skills:
-
-```typescript
-const skills: SkillCategory[] = [
-  {
-    name: "Category Name",
-    skills: [
-      { name: "Skill Name", level: 90 },
-      // Add more skills here
-    ],
-  },
-  // Add more categories here
-];
-```
-
-### Update Navigation
-
-Edit `navigation.ts` to update the site navigation:
-
-```typescript
-const navigation: NavItem[] = [
-  { href: '/path', label: 'Label' },
-  // Add more navigation items here
-];
-```
-
-## Importing Data in Components
-
-Import data in your components using the central index file:
-
-```typescript
-import { personalInfo, projects, skills } from '@/data';
-
-// Use the data in your component
-const MyComponent = () => {
-  return (
-    <h1>{personalInfo.name}</h1>
-    // ... other component code
-  );
-};
-```
-
-## Adding New Data Types
-
-1. Create a new file in the `data` directory (e.g., `certificates.ts`)
-2. Define the TypeScript interface for the new data type
-3. Export the data as a default export
-4. Add the export to `index.ts`
-5. Import and use the data in your components
+1. Edit the relevant data file
+2. Verify type consistency using `tsc --noEmit`
+3. Import updated types through `@/data`
+4. Refresh development server to see changes
 
 ## Best Practices
 
-- Keep data files organized and focused on a specific type of content
-- Use TypeScript interfaces to ensure type safety
-- Document the structure with comments
-- Use the central `index.ts` file for all imports
-- Keep components focused on presentation, not content 
+- Keep data files focused on content only
+- Use JSDoc comments for complex fields
+- Maintain strict null checks
+- Validate external URLs
+- Keep arrays sorted chronologically
+- Use descriptive enum values
+
+```typescript
+// Example type-safe import
+import type { Experience } from '@/data';
+
+interface ExperienceProps {
+  experience: Experience;
+}
+```
