@@ -1,8 +1,13 @@
 import { AnimatedElement, StaggerContainer, StaggerItem } from "@/components/ui/Motion";
-import { OptimizedImage } from "@/components/ui/OptimizedImage";
 import Link from "next/link";
+import { personalInfo, projects, skills } from "@/data";
 
 export default function Home() {
+  // Get featured projects only
+  const featuredProjects = projects.filter(project => project.featured);
+  // Get a subset of skills for the homepage
+  const topSkills = skills.flatMap(category => category.skills).slice(0, 8);
+
   return (
     <>
       {/* Hero Section */}
@@ -13,14 +18,13 @@ export default function Home() {
               <AnimatedElement variant="slideInLeft" delay={0.2}>
                 <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
                   <span className="block">Hi, I'm </span>
-                  <span className="block text-orange-500">Fadi Al Zuabi</span>
+                  <span className="block text-orange-500">{personalInfo.name}</span>
                 </h1>
               </AnimatedElement>
               
               <AnimatedElement variant="slideInLeft" delay={0.4}>
                 <p className="mt-6 text-xl text-gray-600 dark:text-gray-300 max-w-2xl">
-                  A passionate software engineer specializing in full-stack web development. 
-                  I build modern, responsive, and user-friendly applications.
+                  {personalInfo.bio}
                 </p>
               </AnimatedElement>
               
@@ -66,41 +70,24 @@ export default function Home() {
           
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Project cards */}
-            <StaggerItem className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 duration-300">
-              <div className="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                <span className="text-gray-500 dark:text-gray-400">Project Image</span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold">Project One</h3>
-                <p className="mt-2 text-gray-600 dark:text-gray-400">Short description of the project goes here.</p>
-                <div className="mt-4 flex gap-2">
-                  <span className="inline-flex items-center rounded-full font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 text-xs px-2.5 py-0.5">
-                    React
-                  </span>
-                  <span className="inline-flex items-center rounded-full font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100 text-xs px-2.5 py-0.5">
-                    Node.js
-                  </span>
+            {featuredProjects.map(project => (
+              <StaggerItem key={project.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 duration-300">
+                <div className="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                  <span className="text-gray-500 dark:text-gray-400">Project Image</span>
                 </div>
-              </div>
-            </StaggerItem>
-            
-            <StaggerItem className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 duration-300">
-              <div className="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                <span className="text-gray-500 dark:text-gray-400">Project Image</span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold">Project Two</h3>
-                <p className="mt-2 text-gray-600 dark:text-gray-400">Short description of the project goes here.</p>
-                <div className="mt-4 flex gap-2">
-                  <span className="inline-flex items-center rounded-full font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100 text-xs px-2.5 py-0.5">
-                    Next.js
-                  </span>
-                  <span className="inline-flex items-center rounded-full font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100 text-xs px-2.5 py-0.5">
-                    TypeScript
-                  </span>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold">{project.title}</h3>
+                  <p className="mt-2 text-gray-600 dark:text-gray-400">{project.description}</p>
+                  <div className="mt-4 flex gap-2 flex-wrap">
+                    {project.technologies.map(tech => (
+                      <span key={tech} className="inline-flex items-center rounded-full font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 text-xs px-2.5 py-0.5">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </StaggerItem>
+              </StaggerItem>
+            ))}
           </StaggerContainer>
           
           <AnimatedElement variant="fadeIn" delay={0.4} className="mt-12 text-center">
@@ -124,18 +111,18 @@ export default function Home() {
           </AnimatedElement>
           
           <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {['JavaScript', 'TypeScript', 'React', 'Next.js', 'Node.js', 'Express', 'MongoDB', 'SQL'].map((skill) => (
+            {topSkills.map((skill) => (
               <StaggerItem 
-                key={skill} 
+                key={skill.name} 
                 className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm text-center transform transition-transform hover:scale-105 duration-300"
               >
                 <div className="text-4xl mb-4 text-orange-500">
                   {/* Placeholder for icon */}
                   <div className="inline-block w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900 flex items-center justify-center">
-                    <span className="text-base">{skill.charAt(0)}</span>
+                    <span className="text-base">{skill.name.charAt(0)}</span>
                   </div>
                 </div>
-                <h3 className="font-medium">{skill}</h3>
+                <h3 className="font-medium">{skill.name}</h3>
               </StaggerItem>
             ))}
           </StaggerContainer>
