@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { SkipToContent } from "@/components/ui/Accessibility";
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { MobileNav } from "@/components/MobileNav";
 import { ClientRouter } from "@/components/ClientRouter";
 import Link from "next/link";
@@ -58,8 +57,7 @@ export default function RootLayout({
                       </Link>
                     ))}
                     
-                    {/* Theme Toggle */}
-                    <ThemeToggle className="ml-4" />
+                    {/* Theme Toggle removed */}
                   </div>
                   
                   {/* Mobile Navigation */}
@@ -143,7 +141,7 @@ export default function RootLayout({
                 <p className="text-gray-500 dark:text-gray-400 text-sm">
                   © {new Date().getFullYear()} Portfolio. All rights reserved.
                 </p>
-                <ThemeToggle />
+                {/* Theme Toggle removed */}
               </div>
             </div>
           </footer>

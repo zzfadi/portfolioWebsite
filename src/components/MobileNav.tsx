@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ThemeToggle } from './ui/ThemeToggle';
+// Removed ThemeToggle import
 import Link from 'next/link';
 
 interface MobileNavProps {
@@ -99,14 +99,11 @@ export const MobileNav: React.FC<MobileNavProps> = ({ className = '' }) => {
                 ))}
               </ul>
 
-              <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between">
-                <span className="text-sm text-gray-600 dark:text-gray-400">Toggle theme</span>
-                <ThemeToggle />
-              </div>
+              {/* Removed Theme Toggle section */}
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
     </div>
   );
-}; 
+};
