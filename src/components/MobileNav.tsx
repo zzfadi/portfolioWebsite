@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 // Removed ThemeToggle import
 import Link from 'next/link';
+import { navigation } from '@/data';
 
 interface MobileNavProps {
   className?: string;
@@ -15,13 +16,6 @@ export const MobileNav: React.FC<MobileNavProps> = ({ className = '' }) => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
-  const navigationItems = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/projects', label: 'Projects' },
-    { href: '/contact', label: 'Contact' }
-  ];
 
   return (
     <div className={`md:hidden ${className}`}>
@@ -53,53 +47,48 @@ export const MobileNav: React.FC<MobileNavProps> = ({ className = '' }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            className="fixed inset-0 bg-gray-900 bg-opacity-50 z-40 md:hidden"
             onClick={toggleMenu}
             aria-hidden="true"
           />
         )}
       </AnimatePresence>
 
-      {/* Mobile Menu Panel */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             id="mobile-menu"
-            className="fixed right-0 top-0 w-64 h-full bg-white dark:bg-gray-800 shadow-lg z-50 overflow-y-auto"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            transition={{ type: 'tween', duration: 0.3 }}
+            className="fixed top-0 right-0 bottom-0 w-64 bg-white dark:bg-gray-800 shadow-xl z-50 p-6 overflow-y-auto"
           >
-            <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Menu</h2>
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-lg font-bold text-gray-900 dark:text-white">Menu</h2>
               <button
                 onClick={toggleMenu}
-                className="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white"
+                className="text-gray-600 hover:text-orange-500 dark:text-gray-400 dark:hover:text-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
                 aria-label="Close menu"
               >
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
-
-            <nav className="p-4" role="navigation" aria-label="Mobile Navigation">
-              <ul className="space-y-3">
-                {navigationItems.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="block py-2 px-4 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-orange-500 dark:hover:text-orange-400 rounded-md transition-all"
-                      onClick={toggleMenu}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Removed Theme Toggle section */}
+            
+            <nav className="space-y-4">
+              {navigation.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={toggleMenu}
+                  className="block py-2.5 px-4 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >
+                  {item.label}
+                </Link>
+              ))}
             </nav>
           </motion.div>
         )}
