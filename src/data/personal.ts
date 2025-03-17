@@ -26,4 +26,4 @@ const personalInfo: PersonalInfo = {
   // This avoids duplication of social media information
 };
 
-export default personalInfo;
+export { personalInfo };

@@ -1,5 +1,5 @@
 // Export all data with their default exports
-export { default as personalInfo } from './personal';
+export { personalInfo } from './personal';
 export { default as projects } from './projects';
 export { default as experiences } from './experience';
 export { default as education } from './education';

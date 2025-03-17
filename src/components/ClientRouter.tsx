@@ -7,22 +7,29 @@ export function ClientRouter() {
   const router = useRouter();
 
   useEffect(() => {
-    // Only run on the client side
     if (typeof window === 'undefined') return;
 
-    // Check if we have a path in the URL query params
     const params = new URLSearchParams(window.location.search);
     const path = params.get('path');
+    const isRedirecting = params.get('redirecting');
 
+    // Handle redirect cleanup first
+    if (isRedirecting === 'true') {
+      const cleanParams = new URLSearchParams();
+      if (params.get('path')) cleanParams.set('path', params.get('path')!);
+      window.history.replaceState(null, '', `${window.location.pathname}?${cleanParams}`);
+      return;
+    }
+
+    // Validate and navigate
     if (path) {
-      // Clean up the URL
-      const newUrl = window.location.pathname;
-      window.history.replaceState(null, '', newUrl);
+      const validPaths = ['/', '/about', '/projects', '/contact', '/contact/thank-you'];
+      const cleanPath = validPaths.includes(path) ? path : '/';
       
-      // Navigate to the correct route
-      router.push(path);
+      window.history.replaceState(null, '', window.location.pathname);
+      router.push(cleanPath);
     }
   }, [router]);
 
   return null;
-} 
+}

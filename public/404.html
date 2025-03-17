@@ -2,27 +2,71 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Redirecting...</title>
+  <title>Page Not Found</title>
   <script>
-    // GitHub Pages 404 redirect for SPA
     (function() {
       const basePath = '/portfolioWebsite';
-      const path = window.location.pathname;
+      const validPaths = ['/', '/about', '/projects', '/contact'];
+      const currentPath = window.location.pathname.replace(basePath, '') || '/';
       
-      // Extract the path without the base path
-      let route = path;
-      if (path.startsWith(basePath)) {
-        route = path.substring(basePath.length);
+      if (!validPaths.includes(currentPath) && !window.location.search.includes('redirecting=true')) {
+        window.location.replace(`${basePath}/?redirecting=true&path=${encodeURIComponent(currentPath)}`);
       }
-      
-      // Redirect to the homepage with the route as a parameter
-      const redirectUrl = basePath + '/?path=' + encodeURIComponent(route);
-      window.location.replace(redirectUrl);
     })();
   </script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      background-color: #f9fafb;
+      color: #111827;
+    }
+    .container {
+      max-width: 500px;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 2rem;
+      color: #4b5563;
+    }
+    a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: #f97316;
+      color: white;
+      text-decoration: none;
+      border-radius: 0.25rem;
+      font-weight: 500;
+    }
+    a:hover {
+      background-color: #ea580c;
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #111827;
+        color: #f9fafb;
+      }
+      p {
+        color: #9ca3af;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Page Not Found</h1>
-  <p>Redirecting to homepage...</p>
+  <div class="container">
+    <h1>Page Not Found</h1>
+    <p>Sorry, the page you are looking for doesn't exist or has been moved.</p>
+    <a href="/portfolioWebsite/">Go to Homepage</a>
+  </div>
 </body>
-</html> 
+</html>

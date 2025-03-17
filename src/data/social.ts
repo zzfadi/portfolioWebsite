@@ -33,6 +33,13 @@ const socialLinks: SocialLink[] = [
     platform: 'Website',
     icon: 'website',
     isExternal: true
+  },
+  {
+    href: 'URL_ADDRESS.instagram.com/zzfadi',
+    label: 'Instagram',
+    platform: 'Instagram',
+    icon: 'Instagram',
+    isExternal: true
   }
 ];
 

@@ -7,13 +7,14 @@ import { MobileNav } from "@/components/MobileNav";
 import { ClientRouter } from "@/components/ClientRouter";
 import Link from "next/link";
 import { navigation } from "@/data";
+import { personalInfo } from "@/data/personal";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "Portfolio",
-    template: "%s | Portfolio",
+    default: personalInfo.name.split(' ')[0],
+    template: `%s | ${personalInfo.name.split(' ')[0]}`,
   },
   description: "Software Engineer Portfolio showcasing projects and skills",
 };
@@ -36,7 +37,7 @@ export default function RootLayout({
                 <div className="flex justify-between h-16">
                   <div className="flex items-center">
                     <Link href="/" className="flex-shrink-0 flex items-center" aria-label="Go to homepage">
-                      <span className="text-xl font-bold text-gray-900 dark:text-white">Portfolio</span>
+                      <span className="text-xl font-bold text-gray-900 dark:text-white">{personalInfo.name.split(' ')[0]}</span>
                     </Link>
                   </div>
                   
@@ -68,7 +69,7 @@ export default function RootLayout({
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
               <div className="md:flex md:items-center md:justify-between">
                 <div className="text-center md:text-left">
-                  <p className="text-gray-600 dark:text-gray-400">© {new Date().getFullYear()} Portfolio. All rights reserved.</p>
+                  <p className="text-gray-600 dark:text-gray-400">© {new Date().getFullYear()} {personalInfo.name.split(' ')[0]}. All rights reserved.</p>
                 </div>
                 
                 <div className="mt-4 md:mt-0 flex items-center justify-center md:justify-end space-x-6">

@@ -94,7 +94,16 @@ export default function ContactPage() {
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 md:p-8">
                 <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Send Me a Message</h2>
                 
-                <form className="space-y-6">
+                <form 
+                  className="space-y-6"
+                  action="https://formsubmit.co/fadi.b.zuabi@gmail.com" // Hardcode your email temporarily
+                  method="POST"
+                >
+                  <input type="hidden" name="_next" value={`${process.env.NEXT_PUBLIC_WEBSITE_URL}/contact/thank-you`} />
+                  <input type="hidden" name="_captcha" value="false"/>
+                  <input type="hidden" name="_next" value="http://localhost:3000/portfolioWebsite/contact/thank-you" />
+                  <input type="hidden" name="_subject" value="New message from portfolio" />
+                  
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
                     <input
@@ -155,4 +164,4 @@ export default function ContactPage() {
       </section>
     </>
   );
-} 
+}
