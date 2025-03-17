@@ -18,45 +18,104 @@ export interface SkillCategory {
 
 const skills: SkillCategory[] = [
   {
-    name: "Frontend Development",
+    name: "Languages",
     skills: [
-      { name: "JavaScript", level: 90, icon: "javascript" },
-      { name: "TypeScript", level: 85, icon: "typescript" },
-      { name: "React", level: 90, icon: "react" },
-      { name: "Next.js", level: 85, icon: "nextjs" },
-      { name: "HTML/CSS", level: 95, icon: "html" },
-      { name: "Tailwind CSS", level: 90, icon: "tailwind" }
+      { name: "C/C++", description: "Embedded systems focus, modern C++14/17" },
+      { name: "Python", description: "Automation & testing" },
+      { name: "Shell Scripting", description: "Bash, build scripting" },
     ],
     colorClass: "orange-500"
   },
   {
-    name: "Backend Development",
+    name: "Operating Systems",
     skills: [
-      { name: "Node.js", level: 85, icon: "nodejs" },
-      { name: "Express", level: 80, icon: "express" },
-      { name: "MongoDB", level: 75, icon: "mongodb" },
-      { name: "PostgreSQL", level: 80, icon: "postgresql" },
-      { name: "REST APIs", level: 90 },
-      { name: "GraphQL", level: 75, icon: "graphql" }
+      { name: "Linux" },
+      { name: "Proprietary Firmware OS" },
+      { name: "RTOS" },
+      { name: "Embedded Systems" },
     ],
     colorClass: "teal-500"
   },
   {
-    name: "DevOps & Tools",
+    name: "DevOps/Tools",
     skills: [
-      { name: "Git", level: 85, icon: "git" },
-      { name: "Docker", level: 70, icon: "docker" },
-      { name: "AWS", level: 75, icon: "aws" },
-      { name: "CI/CD", level: 80 },
-      { name: "Jest", level: 75, icon: "jest" }
+      { name: "Git" },
+      { name: "Perforce" },
+      { name: "SVN" },
+      { name: "GHS Debugger" },
+      { name: "Lauterbach" },
+      { name: "Google Test" },
+      { name: "Jenkins" },
+      { name: "CI/CD" },
+      { name: "LDRA" },
+      { name: "Coverity" },
     ],
     colorClass: "blue-500"
+  },
+  {
+    name: "Hardware Interfaces & Protocols",
+    skills: [
+      { name: "NVMe" },
+      { name: "PCIe" },
+      { name: "SMBus" },
+      { name: "QMI" },
+      { name: "USB" },
+      { name: "Ethernet" },
+      { name: "ARM CPUs" },
+      { name: "Custom TPUs" },
+      { name: "NAND controllers" },
+    ],
+    colorClass: "purple-500"
+  },
+  {
+    name: "Standards Compliance",
+    skills: [
+      { name: "MISRA C/C++" },
+      { name: "DO-178C" },
+    ],
+    colorClass: "green-500"
+  },
+  {
+    name: "Real-time Systems",
+    skills: [
+      { name: "RTOS design and implementation" },
+    ],
+    colorClass: "red-500"
+  },
+  {
+    name: "Boot Systems",
+    skills: [
+      { name: "Secure boot" },
+      { name: "Firmware update systems" },
+    ],
+    colorClass: "yellow-500"
+  },
+  {
+    name: "Debug",
+    skills: [
+      { name: "JTAG" },
+      { name: "SWD" },
+      { name: "Logic analyzers" },
+      { name: "Firmware logging systems" },
+    ],
+    colorClass: "gray-500"
+  },
+  {
+    name: "Analysis & Testing",
+    skills: [
+      { name: "LDRA" },
+      { name: "Coverity" },
+      { name: "MISRA compliance" },
+      { name: "Google Test" },
+      { name: "Custom frameworks" },
+    ],
+    colorClass: "pink-500"
   }
 ];
 
 // Simple flat array of all skills for simple listings
-export const allSkills: string[] = skills.flatMap(category => 
+export const allSkills: string[] = skills.flatMap(category =>
   category.skills.map(skill => skill.name)
 );
 
-export default skills; 
+export default skills;

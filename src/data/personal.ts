@@ -3,6 +3,8 @@
  * Contains basic information about the site owner
  */
 
+import { SocialLink } from './social';
+
 export interface PersonalInfo {
   name: string;
   title: string;
@@ -10,39 +12,18 @@ export interface PersonalInfo {
   shortBio?: string;
   contactEmail?: string;
   location?: string;
-  socialLinks?: SocialLink[];
-}
-
-export interface SocialLink {
-  platform: string;
-  url: string;
-  icon?: string;
+  socialLinks?: SocialLink[]; // Imported from social.ts
 }
 
 const personalInfo: PersonalInfo = {
   name: "Fadi Al Zuabi",
-  title: "Software Engineer",
+  title: "Firmware Engineer / Senior Firmware Engineer",
   bio: "A passionate firmware engineer specializing in Embedded Software development. I build modern, responsive, and user-friendly applications.",
-  shortBio: "Software engineer with a passion for creating elegant solutions to complex problems.",
+  shortBio: "Innovative Embedded Software Engineer with 5+ years of experience developing firmware and embedded software for safety-critical systems.",
   contactEmail: "fadi.b.zuabi@gmail.com",
-  location: "Roseville, CA",
-  socialLinks: [
-    {
-      platform: "GitHub",
-      url: "https://github.com/zzfadi",
-      icon: "github"
-    },
-    {
-      platform: "LinkedIn",
-      url: "https://linkedin.com/in/yourusername",
-      icon: "linkedin"
-    },
-    {
-      platform: "Twitter",
-      url: "https://twitter.com/yourusername",
-      icon: "twitter"
-    }
-  ]
+  location: "Roseville, California",
+  // Social links are now imported from social.ts through navigation.ts
+  // This avoids duplication of social media information
 };
 
-export default personalInfo; 
+export { personalInfo };
